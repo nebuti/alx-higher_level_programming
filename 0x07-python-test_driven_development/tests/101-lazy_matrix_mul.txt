@@ -1,0 +1,51 @@
+The ``101-lazy_matrix_mul`` module
+=================================
+
+Using ``lazy_matrix_mul``
+---------------------------------
+
+
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+>>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[ 7 10]
+ [15 22]]
+>>> print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13 16]]
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+>>> import numpy
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[5, 6], [7, 8]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+[[19 22]
+ [43 50]]
+>>> m_a = [[1, 2], []]
+>>> m_b = [[5, 6], [7, 8]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "101-lazy_matrix_mul.py", line 14, in lazy_matrix_mul
+    result = numpy.dot(m_a, m_b)
+ValueError: setting an array element with a sequence.
+>>> m_a = [[1, 2], 'holberton']
+>>> m_b = [[5, 6], [7, 8]]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "101-lazy_matrix_mul.py", line 14, in lazy_matrix_mul
+    result = numpy.dot(m_a, m_b)
+ValueError: cannot set an array element with a sequence
+>>> m_b = [[], []]
+>>> m_a = [[], []]
+>>> print(lazy_matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "101-lazy_matrix_mul.py", line 14, in lazy_matrix_mul
+    result = numpy.dot(m_a, m_b)
+ValueError: objects are not aligned
+>>> m_a = "Holberton"
+>>> m_b = [[5, 6], [7, 8]]
+>>> try:
+>>> print(lazy_matrix_mul(m_a, m_b))
+>>> except Exception as e:
+>>> print(e)
